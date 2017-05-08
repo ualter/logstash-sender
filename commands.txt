@@ -1,0 +1,17 @@
+
+
+============= LOGSTASH
+### Start Logstash
+logstash -f logstash-sender.conf --config.reload.automatic
+
+============= ELASTICSEARCH
+
+### Queyring LogStash Content
+curl "localhost:9200/logstash-*/_search"
+curl "localhost:9200/logstash-*/_search?pretty"
+curl "localhost:9200/logstash-2014.10.07/_search?pretty"
+curl -XPOST "localhost:9200/logstash-*/logs/1 -d"
+
+
+### Clear all the LogStash Content
+curl -XDELETE "localhost:9200/logstash-*"
